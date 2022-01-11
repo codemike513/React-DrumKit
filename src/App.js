@@ -1,23 +1,63 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Drum from "./components/Drum";
 
 function App() {
+  const [sounds] = useState([
+    {
+      name: "boom",
+      sound: require("./sounds/boom.wav"),
+      key: "A",
+    },
+    {
+      name: "clap",
+      sound: require("./sounds/clap.wav"),
+      key: "S",
+    },
+    {
+      name: "hihat",
+      sound: require("./sounds/hihat.wav"),
+      key: "D",
+    },
+    {
+      name: "kick",
+      sound: require("./sounds/kick.wav"),
+      key: "F",
+    },
+    {
+      name: "openhat",
+      sound: require("./sounds/openhat.wav"),
+      key: "G",
+    },
+    {
+      name: "ride",
+      sound: require("./sounds/ride.wav"),
+      key: "H",
+    },
+    {
+      name: "snare",
+      sound: require("./sounds/snare.wav"),
+      key: "J",
+    },
+    {
+      name: "tink",
+      sound: require("./sounds/tink.wav"),
+      key: "K",
+    },
+    {
+      name: "tom",
+      sound: require("./sounds/tom.wav"),
+      key: "L",
+    },
+  ]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>React Drumkit</h1>
+      <div className="drums">
+        {sounds.map((sound, i) => (
+          <Drum key={i} letter={sound.key} sound={sound.sound} />
+        ))}
+      </div>
     </div>
   );
 }
